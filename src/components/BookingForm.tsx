@@ -105,15 +105,15 @@ _Sent via website booking enquiry form._`;
   return (
     <div
       id="booking-form"
-      className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 border border-slate-100 relative overflow-hidden"
+      className="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-slate-100 relative overflow-hidden w-full max-w-full"
     >
       <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#0878C9] via-[#FFD900] to-[#0878C9]" />
 
-      <div className="mb-6">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0878C9] text-xs font-bold mb-2">
+      <div className="mb-5 sm:mb-6">
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-[#0878C9] text-[10px] sm:text-xs font-bold mb-2">
           <span>FAST & EASY QUOTE</span>
         </div>
-        <h3 className="text-xl sm:text-2xl font-black text-[#10172A] tracking-tight">
+        <h3 className="text-lg sm:text-xl md:text-2xl font-black text-[#10172A] tracking-tight">
           Plan Your Travel Today
         </h3>
         <p className="text-xs sm:text-sm text-slate-600 mt-1">

@@ -64,15 +64,15 @@ export const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Desktop 3-Card Grid with highlighted active slide, Mobile 1-Card */}
+        {/* Testimonials Carousel: On mobile shows single active card, on lg shows 3 cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {TESTIMONIALS_LIST.map((t, idx) => (
             <div
               key={idx}
-              className={`rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between ${
+              className={`rounded-2xl p-5 sm:p-6 transition-all duration-300 flex-col justify-between ${
                 idx === currentIndex
-                  ? "bg-white border-2 border-[#0878C9] shadow-xl scale-[1.02]"
-                  : "bg-white/80 border border-slate-200/90 shadow-sm"
+                  ? "flex bg-white border-2 border-[#0878C9] shadow-xl"
+                  : "hidden md:flex bg-white/80 border border-slate-200/90 shadow-sm"
               }`}
             >
               <div>

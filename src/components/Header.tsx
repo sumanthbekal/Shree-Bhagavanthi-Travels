@@ -19,13 +19,13 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full transition-all duration-300">
-      {/* Compact Top Info Bar */}
-      <div className="bg-[#10172A] text-slate-200 text-xs py-2 px-4 sm:px-8 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
-            <span className="flex items-center gap-1.5 font-medium text-slate-300">
+      {/* Top Info Bar - Clean and wrap-safe on mobile */}
+      <div className="bg-[#10172A] text-slate-200 text-xs py-2 px-3 sm:px-6 lg:px-8 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2 text-center sm:text-left">
+          <div className="flex items-center gap-2 justify-center sm:justify-start flex-wrap">
+            <span className="flex items-center gap-1.5 font-medium text-slate-300 text-[11px] sm:text-xs">
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              {BUSINESS_CONFIG.tagline}
+              Your Trusted Travel Partner
             </span>
             <span className="hidden md:inline text-slate-600">|</span>
             <span className="hidden md:flex items-center gap-1 text-slate-300">
@@ -34,20 +34,20 @@ export const Header: React.FC = () => {
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-[#FFD900]" />
-              <span className="text-slate-400">Call Us:</span>
+          <div className="flex items-center justify-center gap-2 text-[11px] sm:text-xs">
+            <div className="flex items-center gap-1.5">
+              <Phone className="w-3.5 h-3.5 text-[#FFD900] shrink-0" />
+              <span className="text-slate-400 hidden xs:inline">Call:</span>
               <a
                 href={`tel:${BUSINESS_CONFIG.phones[0].number}`}
                 className="font-bold text-white hover:text-[#FFD900] transition-colors"
               >
                 {BUSINESS_CONFIG.phones[0].display}
               </a>
-              <span className="text-slate-500">/</span>
+              <span className="hidden sm:inline text-slate-500">/</span>
               <a
                 href={`tel:${BUSINESS_CONFIG.phones[1].number}`}
-                className="font-bold text-white hover:text-[#FFD900] transition-colors"
+                className="hidden sm:inline font-bold text-white hover:text-[#FFD900] transition-colors"
               >
                 {BUSINESS_CONFIG.phones[1].display}
               </a>
@@ -60,13 +60,13 @@ export const Header: React.FC = () => {
       <div
         className={`w-full transition-all duration-200 ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-md py-3"
-            : "bg-white shadow-sm py-4"
+            ? "bg-white/95 backdrop-blur-md shadow-md py-2.5 sm:py-3"
+            : "bg-white shadow-sm py-3 sm:py-4"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
           {/* Logo */}
-          <a href="#home" className="focus:outline-none">
+          <a href="#home" className="focus:outline-none shrink min-w-0">
             <Logo variant="dark" />
           </a>
 
@@ -83,42 +83,49 @@ export const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Action CTAs - Desktop */}
+          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
             <a
               href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(
                 "Hello Shree Bhagavanthi Travels, I would like to enquire about taxi and travel services."
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3.5 py-2 text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 rounded-lg border border-emerald-200 transition-all shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 rounded-lg border border-emerald-200 transition-all shadow-sm"
             >
-              <MessageCircle className="w-4 h-4 text-emerald-600 fill-emerald-600" />
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-600 fill-emerald-600" />
               <span>WhatsApp</span>
             </a>
 
             <a
               href="#booking-form"
-              className="flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-slate-900 bg-[#FFD900] hover:bg-[#e6c300] active:scale-95 rounded-lg shadow-sm hover:shadow transition-all uppercase tracking-wider"
+              className="flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold text-slate-900 bg-[#FFD900] hover:bg-[#e6c300] active:scale-95 rounded-lg shadow-sm hover:shadow transition-all uppercase tracking-wider whitespace-nowrap"
             >
               Book Your Trip
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center gap-2">
+          {/* Mobile Actions: Call, WhatsApp, & Hamburger */}
+          <div className="flex lg:hidden items-center gap-1 sm:gap-2 shrink-0">
+            <a
+              href={`tel:${BUSINESS_CONFIG.phones[0].number}`}
+              className="sm:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100"
+              aria-label="Call Shree Bhagavanthi Travels"
+            >
+              <Phone className="w-4 h-4 text-[#0878C9]" />
+            </a>
             <a
               href="#booking-form"
-              className="sm:hidden px-3 py-1.5 text-xs font-bold text-slate-900 bg-[#FFD900] rounded-lg"
+              className="px-2.5 py-1.5 text-[11px] font-black uppercase text-slate-900 bg-[#FFD900] rounded-lg shrink-0"
             >
               Book
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>
@@ -127,19 +134,19 @@ export const Header: React.FC = () => {
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-slate-200 shadow-xl px-4 pt-2 pb-6 animate-fadeIn">
-          <nav className="flex flex-col space-y-3">
+          <nav className="flex flex-col space-y-2">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-semibold text-slate-800 hover:text-[#0878C9] hover:bg-slate-50 px-3 py-2 rounded-md transition-colors"
+                className="text-sm font-semibold text-slate-800 hover:text-[#0878C9] hover:bg-slate-50 px-3 py-2 rounded-md transition-colors"
               >
                 {link.label}
               </a>
             ))}
           </nav>
-          <div className="mt-5 pt-4 border-t border-slate-200 flex flex-col gap-3">
+          <div className="mt-4 pt-4 border-t border-slate-200 flex flex-col gap-2.5">
             <a
               href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(
                 "Hello Shree Bhagavanthi Travels, I would like to enquire about taxi booking."
@@ -147,17 +154,24 @@ export const Header: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg text-sm shadow-sm"
+              className="flex items-center justify-center gap-2 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg text-xs uppercase tracking-wider shadow-sm"
             >
-              <MessageCircle className="w-5 h-5 fill-white" />
+              <MessageCircle className="w-4 h-4 fill-white" />
               Chat on WhatsApp
             </a>
             <a
               href={`tel:${BUSINESS_CONFIG.phones[0].number}`}
-              className="flex items-center justify-center gap-2 py-3 bg-[#10172A] hover:bg-slate-800 text-white font-bold rounded-lg text-sm shadow-sm"
+              className="flex items-center justify-center gap-2 py-2.5 bg-[#10172A] hover:bg-slate-800 text-white font-bold rounded-lg text-xs uppercase tracking-wider shadow-sm"
             >
-              <Phone className="w-4 h-4 text-[#FFD900]" />
+              <Phone className="w-3.5 h-3.5 text-[#FFD900]" />
               Call {BUSINESS_CONFIG.phones[0].display}
+            </a>
+            <a
+              href={`tel:${BUSINESS_CONFIG.phones[1].number}`}
+              className="flex items-center justify-center gap-2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-lg text-xs uppercase tracking-wider shadow-sm"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#0878C9]" />
+              Call {BUSINESS_CONFIG.phones[1].display}
             </a>
           </div>
         </div>
